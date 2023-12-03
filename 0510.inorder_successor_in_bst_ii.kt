@@ -1,0 +1,16 @@
+internal class Solution {
+  fun inorderSuccessor(node: Node): Node {
+    var node = node
+    if (node.right != null) {
+      node = node.right
+      while (node.left != null) {
+        node = node.left
+      }
+      return node
+    }
+    while (node.parent != null && node === node.parent.right) {
+      node = node.parent
+    }
+    return node.parent
+  }
+}
